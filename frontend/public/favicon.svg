@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7c4dff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00e676;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e676;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#7c4dff;stop-opacity:0.6" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark background circle -->
+  <circle cx="64" cy="64" r="62" fill="#0a0a0a" stroke="url(#grad1)" stroke-width="2"/>
+  
+  <!-- Abstract AI symbol - interconnected nodes representing frontier AI -->
+  <!-- Center node -->
+  <circle cx="64" cy="64" r="8" fill="url(#grad1)" filter="url(#glow)"/>
+  
+  <!-- Outer nodes -->
+  <circle cx="64" cy="32" r="6" fill="#00e5ff" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="92" cy="64" r="6" fill="#7c4dff" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="64" cy="96" r="6" fill="#00e676" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="36" cy="64" r="6" fill="#00e5ff" opacity="0.9" filter="url(#glow)"/>
+  
+  <!-- Connecting lines with gradient -->
+  <line x1="64" y1="32" x2="64" y2="56" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  <line x1="92" y1="64" x2="72" y2="64" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  <line x1="64" y1="96" x2="64" y2="72" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  <line x1="36" y1="64" x2="56" y2="64" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Diagonal connections for interconnectedness -->
+  <line x1="64" y1="32" x2="92" y2="64" stroke="url(#grad2)" stroke-width="1.5" opacity="0.3"/>
+  <line x1="92" y1="64" x2="64" y2="96" stroke="url(#grad2)" stroke-width="1.5" opacity="0.3"/>
+  <line x1="64" y1="96" x2="36" y2="64" stroke="url(#grad2)" stroke-width="1.5" opacity="0.3"/>
+  <line x1="36" y1="64" x2="64" y2="32" stroke="url(#grad2)" stroke-width="1.5" opacity="0.3"/>
+  
+  <!-- Subtle orbital rings -->
+  <circle cx="64" cy="64" r="40" fill="none" stroke="url(#grad1)" stroke-width="0.5" opacity="0.3" stroke-dasharray="2,4"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="url(#grad1)" stroke-width="0.5" opacity="0.2" stroke-dasharray="2,6"/>
+</svg>
+

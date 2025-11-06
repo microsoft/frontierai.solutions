@@ -1,0 +1,12 @@
+{
+  "exec_narr": {
+    "type": "content",
+    "title": "Becoming Frontier Success Framework",
+    "context": "Becoming Frontier Success Framework:\n\nKey Statistics:\n- Boost developer efficiency by 30%\n- Increase employee productivity by 30%\n- Streamline customer support by 40%\n- Reduce costs by 40%\n- Improve go-to-market speed by 50%\n\nCore Principle: AI-first organizations think in orders of magnitude, not incremental improvements.\n\nFour Pillars:\n\n1. Enrich Employee Experiences\n   - Tools: Microsoft 365 Copilot, Copilot Studio, Security Copilot\n   - Benefits: 20% reduction in response times, 25-40% reduced helpdesk demand, 840 hours saved\n   - Focus: Empower teams with AI copilots and agents to boost productivity\n\n2. Reinvent Customer Engagement\n   - Tools: Azure AI Foundry, GitHub Copilot, Copilot for Service\n   - Benefits: 55% reduction in wait times, 5x increase in email clickthrough, 66% reduction in support traffic\n   - Focus: Transform customer interactions with personalized AI experiences\n\n3. Reshape Business Processes\n   - Tools: Copilot Studio, GitHub Copilot, Power Platform\n   - Benefits: 30,000 hours saved monthly, 93% reduction in handling time, 50% increase in automatic payments\n   - Focus: Automate workflows and streamline operations with intelligent agents\n\n4. Bend the Curve on Innovation\n   - Tools: Azure AI Foundry, Azure Quantum, Microsoft Fabric\n   - Benefits: 50% reduction in app build time, 80% faster programming, accelerated discovery (years to 80 hours)\n   - Focus: Accelerate R&D and experimentation with AI-powered tools",
+    "urls": [
+      "https://www.microsoft.com/en-us/microsoft-cloud/blog/2025/09/29/frontier-firms-in-action-lessons-from-the-ai-adoption-surge/",
+      "https://azure.microsoft.com/en-us/blog/building-the-frontier-firm-with-microsoft-azure-the-business-case-for-cloud-and-ai-modernization/",
+      "https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born"
+    ]
+  }
+}

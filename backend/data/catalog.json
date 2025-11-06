@@ -1,0 +1,79 @@
+{
+  "type": "catalog",
+  "roles": [
+    {
+      "slug": "legal",
+      "name": "Legal"
+    },
+    {
+      "slug": "sales",
+      "name": "Sales"
+    },
+    {
+      "slug": "hr",
+      "name": "HR"
+    },
+    {
+      "slug": "it",
+      "name": "IT"
+    },
+    {
+      "slug": "marketing",
+      "name": "Marketing"
+    },
+    {
+      "slug": "software-development",
+      "name": "Software Development"
+    },
+    {
+      "slug": "service",
+      "name": "Service"
+    }
+  ],
+  "industries": [
+    {
+      "slug": "financial-services",
+      "name": "Financial Services"
+    },
+    {
+      "slug": "healthcare",
+      "name": "Healthcare"
+    },
+    {
+      "slug": "retail",
+      "name": "Retail"
+    },
+    {
+      "slug": "consumer-goods",
+      "name": "Consumer Goods"
+    },
+    {
+      "slug": "manufacturing-and-mobility",
+      "name": "Manufacturing & Mobility"
+    },
+    {
+      "slug": "energy-and-resources",
+      "name": "Energy & Resources"
+    },
+    {
+      "slug": "telecommunications",
+      "name": "Telecommunications"
+    },
+    {
+      "slug": "media-and-entertainment",
+      "name": "Media & Entertainment"
+    },
+    {
+      "slug": "government",
+      "name": "Government"
+    },
+    {
+      "slug": "education",
+      "name": "Education"
+    },
+    {
+      "slug": "nonprofit",
+      "name": "Nonprofit"
+    }
+  ]
+}

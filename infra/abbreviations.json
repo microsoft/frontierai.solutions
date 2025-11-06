@@ -1,0 +1,10 @@
+{
+  "resourcesResourceGroups": "rg-",
+  "appManagedEnvironments": "cae-",
+  "containerRegistryRegistries": "cr",
+  "operationalInsightsWorkspaces": "log-",
+  "appContainerApps": "ca-",
+  "cognitiveServicesAccounts": "cog-",
+  "insightsComponents": "appi-",
+  "managedIdentityUserAssignedIdentities": "id-"
+}

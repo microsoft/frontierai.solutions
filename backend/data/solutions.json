@@ -1,0 +1,26 @@
+{
+  "type": "solutions",
+  "solutions": [
+    {
+      "id": "engage",
+      "title": "Engage",
+      "description": "Talk to our avatar agent – ask about products, pricing, or roadmaps. Get instant voice + on‑screen answers.",
+      "category": "Live",
+      "enabled": true
+    },
+    {
+      "id": "explore",
+      "title": "Explore",
+      "description": "Navigate by industry, use case, or stack. Compare reference architectures and live demos.",
+      "category": "Catalog",
+      "enabled": false
+    },
+    {
+      "id": "envision",
+      "title": "Envision",
+      "description": "Immerse in the Zava brand narrative – motion, sound, and storyboards that paint the frontier.",
+      "category": "Story",
+      "enabled": false
+    }
+  ]
+}

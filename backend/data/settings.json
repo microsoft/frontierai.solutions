@@ -1,0 +1,20 @@
+{
+  "inspire": {
+    "type": "settings",
+    "inspireInterests": [
+      "Sora 2 Video Generation",
+      "VLA Model Training",
+      "Manufacturing Solutions",
+      "Custom AI Solutions",
+      "Azure AI Foundry",
+      "Other Zava Capabilities"
+    ]
+  },
+  "avatar": {
+    "type": "settings",
+    "avatarCharacter": "lisa",
+    "avatarStyle": "casual-sitting",
+    "voiceName": "en-US-Ava:DragonHDLatestNeural",
+    "voiceType": "azure-standard"
+  }
+}

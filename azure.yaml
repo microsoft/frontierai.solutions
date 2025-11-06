@@ -1,0 +1,37 @@
+name: frontierai-solutions
+metadata:
+  template: frontierai-solutions@0.0.1
+
+infra:
+  path: infra
+  module: main
+  provider: bicep
+  deploymentScope: subscription
+
+hooks:
+  predeploy:
+    shell: sh
+    run: .azure/hooks/predeploy.sh
+    continueOnError: false
+  postprovision:
+    shell: sh
+    run: .azure/hooks/postprovision.sh
+    continueOnError: false
+
+services:
+  backend:
+    project: .
+    language: python
+    host: containerapp
+    docker:
+      path: ./backend/Dockerfile
+      context: .
+  frontend:
+    project: .
+    language: js
+    host: containerapp
+    docker:
+      path: ./frontend/Dockerfile
+      context: .
+      buildArgs:
+        - VITE_API_URL=${BACKEND_URI}
