@@ -3,7 +3,7 @@ from typing import Optional
 from dotenv import load_dotenv
 
 if os.getenv("ENVIRONMENT", "development") == "development":
-    load_dotenv(override=False)
+    load_dotenv(override=True)
 
 class Config:
     """Centralized configuration management for the application."""
