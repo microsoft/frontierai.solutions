@@ -104,9 +104,6 @@ dist-ssr/
 *.local
 
 # Editor directories and files
-.vscode/
-.vscode-test/
-.vscode-server/
 .idea/
 .idea_modules/
 *.iml
