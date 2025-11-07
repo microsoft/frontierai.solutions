@@ -2,6 +2,7 @@
 
 > [!NOTE]
 > See it live at [frontierai.solutions](https://frontierai.solutions)
+> Learn more about the implementation at [deepwiki](https://deepwiki.com/microsoft/frontierai.solutions)
 
 An interactive experience that helps customers discover how frontier AI capabilities solve their specific business challenges. Built for experience centers, innovation hubs, demo booths, and partner demonstrations where customers need to quickly understand how cutting-edge solutions map to their roles, KPIs, and business outcomes.
 
