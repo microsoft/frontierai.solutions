@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mic, MicOff, Loader2, ArrowRight } from 'lucide-react';
+import { X, Mic, MicOff, Loader2, ArrowRight, Github, ExternalLink, AlertCircle } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useRealtime } from '../../hooks/useRealtime';
@@ -29,6 +29,7 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
   const [shareConversation, setShareConversation] = useState(true);
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [hasStartedConversation, setHasStartedConversation] = useState(false);
+  const [isRateLimited, setIsRateLimited] = useState(false);
   const transcriptEndRef = useRef<HTMLDivElement>(null);
   const currentResponseIdRef = useRef<string | null>(null);
 
@@ -213,6 +214,10 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
 
       case 'error':
         console.error('Server error:', data.error);
+        // Check for rate limit error
+        if (data.error?.code === 'avatar_service_rate_limited') {
+          setIsRateLimited(true);
+        }
         break;
     }
   }
@@ -341,6 +346,7 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
     setRecommendations('');
     setIsAvatarReady(false);
     setHasStartedConversation(false);
+    setIsRateLimited(false);
     currentResponseIdRef.current = null;
     onClose();
   }, [isRecording, stopRecording, disconnect, closeWebRTC, onClose]);
@@ -350,10 +356,12 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
   }, [transcript, currentAssistantMessage]);
 
   useEffect(() => {
-    if (isOpen && !isConnected) {
+    if (isOpen) {
       connect();
+    } else {
+      disconnect();
     }
-  }, [isOpen, isConnected, connect]);
+  }, [isOpen, connect, disconnect]);
 
   // Reset state when modal closes
   useEffect(() => {
@@ -362,6 +370,7 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
       setCurrentAssistantMessage('');
       setShowRecommendations(false);
       setRecommendations('');
+      setIsRateLimited(false);
       currentResponseIdRef.current = null;
     }
   }, [isOpen]);
@@ -434,7 +443,7 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
                       <p className="text-sm text-zinc-500">
                         {isAvatarReady 
                           ? 'Click below to grant microphone access and start your conversation'
-                          : 'Avatar is still loading, but you can start the voice conversation now'}
+                          : 'Click below to begin - microphone permission required'}
                       </p>
                     </div>
                     <motion.button
@@ -443,9 +452,8 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
                       whileTap={{ scale: 0.98 }}
                       className="group relative px-8 py-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-base transition-all flex items-center gap-3 cursor-pointer shadow-lg hover:shadow-xl"
                     >
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#00e5ff]/20 to-[#7c4dff]/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="relative flex items-center gap-3">
-                        <div className="h-9 w-9 rounded-full bg-gradient-to-br from-[#00e5ff] to-[#7c4dff] flex items-center justify-center">
+                        <div className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center">
                           <Mic className="h-5 w-5 text-white" />
                         </div>
                         <span>Start Conversation</span>
@@ -715,8 +723,8 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
                   disabled={!isConnected || !hasStartedConversation}
                   className={`p-4 rounded-full transition-all ${
                     isMuted
-                      ? 'bg-red-500 hover:bg-red-600'
-                      : 'bg-[--acc-azure] hover:bg-[--acc-azure]/80'
+                      ? 'bg-red-500/90 hover:bg-red-500'
+                      : 'bg-white/10 hover:bg-white/20 ring-1 ring-white/10'
                   } disabled:opacity-50 disabled:cursor-not-allowed`}
                   title={isMuted ? 'Unmute microphone' : 'Mute microphone'}
                 >
@@ -749,6 +757,60 @@ export function AvatarModal({ isOpen, onClose }: AvatarModalProps) {
                 <ArrowRight className="h-4 w-4" />
               </motion.button>
             </div>
+
+            {/* Rate Limited Error Overlay */}
+            <AnimatePresence>
+              {isRateLimited && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 bg-[#0a0a0a]/95 backdrop-blur-sm z-50 flex items-center justify-center"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <motion.div
+                    initial={{ scale: 0.9, y: 20 }}
+                    animate={{ scale: 1, y: 0 }}
+                    transition={{ type: 'spring', damping: 20 }}
+                    className="max-w-md mx-4 p-8 rounded-2xl bg-white/5 ring-1 ring-white/10 text-center"
+                  >
+                    <div className="flex justify-center mb-4">
+                      <div className="p-3 rounded-full bg-red-500/10 ring-1 ring-red-500/20">
+                        <AlertCircle className="h-8 w-8 text-red-400" />
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-white mb-3">
+                      Avatar Service Rate Limited
+                    </h3>
+                    
+                    <p className="text-zinc-400 mb-6 leading-relaxed">
+                      The avatar service has reached its rate limit. To get unlimited access, you can self-host this solution using your own Azure resources.
+                    </p>
+                    
+                    <div className="flex flex-col gap-3">
+                      <a
+                        href="https://github.com/microsoft/frontierai.solutions"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-all group"
+                      >
+                        <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                        <span>Self-host on GitHub</span>
+                        <ExternalLink className="h-4 w-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                      
+                      <button
+                        onClick={handleClose}
+                        className="px-5 py-2.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </>
       )}
