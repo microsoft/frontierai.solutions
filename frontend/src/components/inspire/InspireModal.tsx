@@ -202,7 +202,7 @@ export function InspireModal({ isOpen, onClose }: InspireModalProps) {
                           <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                         </a>
                         <a
-                          href="https://sightmachine.com/"
+                          href="https://www.microsoft.com/en/customers/story/1698365434338807911-ipg-azure-ai-customer-story"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="Nvidia Omniverse partner solutions (opens in a new tab)"
